@@ -1,0 +1,210 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(
+        to bottom,
+        #6ec6ff 0%,   /* azul cielo arriba */
+        #9be7ff 40%,  /* celeste claro */
+        #d6f5ff 70%,  /* casi blanco */
+        #ffffff 100%  /* horizonte */
+    );
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.6) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.5) 0%, transparent 60%),
+                radial-gradient(circle at 50% 60%, rgba(255,255,255,0.4) 0%, transparent 70%);
+    z-index: 0;
+}
+
+/* 🌸 Árbol */
+.tree {
+    position: absolute;
+    bottom: -18%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1100px;
+    height: 1100px;
+    background: url('img/tree.png') no-repeat center/contain;
+    opacity: 0.8; /* 👈 más opaco */
+}
+
+@keyframes swayTree {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) rotate(2deg); }
+    100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+/* 💖 Centro */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.heart {
+    width: 380px; /* antes 350px */
+    display: block;
+    opacity: 0.98; /* 👈 más opaco */
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    20% { transform: scale(1.12); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.18); }
+    100% { transform: scale(1); }
+}
+
+.heart-container {
+    position: relative;
+    display: inline-block;
+    animation: heartbeat 2.8s infinite; /* ahora aquí */
+}
+
+.text-heart {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 150px; /* antes 22px */
+    text-align: center;
+    width: 80%;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    .text-heart {
+    font-family: 'Great Vibes', cursive;
+}
+}
+
+@keyframes fade {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* 🐻 Imágenes alrededor */
+.img {
+    position: absolute;
+    width: 250px; /* un poco más grandes */
+    animation: float 4s ease-in-out infinite;
+    z-index: 2;
+}
+
+/* distribución más ordenada alrededor del corazón */
+.img1 { top: 8%; left: 6%; }
+.img2 { top: 3%; right: 6%; }
+
+.img3 { top: 35%; left: 6%; }
+.img4 { top: 35%; right: 6%; }
+
+.img5 { bottom: -1%; left: 6%; }
+.img6 { bottom: 2%; right: 6%; }
+
+.img7 { bottom: 1%; left: 43%; }
+
+.img9 { top: -1%; left: 40%; }
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* 🌸 Pétalos */
+.petal {
+    position: absolute;
+    width: 12px;
+    height: 18px;
+    background: #fc9ebd; /* rosa más fuerte */
+    border-radius: 50%;
+    opacity: 0.95; /* más sólido */
+    animation: fall linear infinite;
+    z-index: 0;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(80px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.img-container {
+    position: absolute;
+    width: 250px;
+    animation: float 4s ease-in-out infinite;
+    z-index: 2;
+}
+
+.img-container img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* texto oculto */
+.img-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);        
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    opacity: 0;
+    transition: 0.4s ease;
+    border-radius: 15px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+/* aparece al pasar mouse */
+.img-container:hover .img-text {
+    opacity: 1;
+}
+
+/* texto oculto en el corazón */
+.heart-text-hover {
+    position: absolute;
+    top:30px;
+    left: 40px;
+    width: 70%;
+    height: 70%;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    opacity: 0;
+    transition: 0.4s ease;
+    border-radius: 20px;
+    padding: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+}
+
+/* mostrar al pasar el mouse */
+.heart-container:hover .heart-text-hover {
+    opacity: 1;
+}
